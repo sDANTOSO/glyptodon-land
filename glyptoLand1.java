@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.util.Random;
 import javax.swing.JButton;
 import java.awt.Dimension;
+import java.util.Random;
 /**
  * create a glyptodon land game 
  *
@@ -40,6 +41,8 @@ public class glyptoLand1 extends JFrame implements ActionListener{
         String[][] grid = new String[6][7];
         String[] differentsquares = {"bush","grass","grass2","grass3","dirt", "pond","glyptodon", "dodo"} ;
         int[][] squarechance = { {0,25},{26,35},{36,45},{46,55},{56,65},{66,75},{76,88}, {89,100}};
+         Random random = new Random();
+        int myInt = random.nextInt(101);
         for (int x=0;x<6; x++){ 
             for (int y=0;y<7; y++){
                 grid[x][y] = ("[ ]");
