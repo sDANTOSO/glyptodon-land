@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=glyptoLoadingScreen
+comment0.text=\r\n\ Create\ a\ loading\ screen\ for\ my\ game\ \r\n\r\n\ @Santoso\ Winatan\r\n\ @26/05/25\r\n
+comment1.params=smd
+comment1.target=void\ createDialog(java.lang.String)
+comment2.params=
+comment2.target=glyptoLoadingScreen()
+comment2.text=\r\n\ Constructor\ for\ objects\ of\ class\ glyptoLoadingScreen\r\n
+comment3.params=g
+comment3.target=void\ paint(java.awt.Graphics)
+comment4.params=e
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=5

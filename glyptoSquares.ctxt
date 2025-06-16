@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=glyptoSquares
+comment0.text=\r\n\ \ create\ the\ squares\ for\ my\ game\ also\ make\ the\ menu\ \r\n\r\n\ @Santoso\ Winatan\r\n\ @26/05/25\r\n
+comment1.params=e
+comment1.target=void\ mouseExited(java.awt.event.MouseEvent)
+comment2.params=e
+comment2.target=void\ mouseEntered(java.awt.event.MouseEvent)
+comment3.params=e
+comment3.target=void\ mouseClicked(java.awt.event.MouseEvent)
+comment4.params=e
+comment4.target=void\ mouseReleased(java.awt.event.MouseEvent)
+comment5.params=e
+comment5.target=void\ mousePressed(java.awt.event.MouseEvent)
+comment6.params=e
+comment6.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment7.params=g
+comment7.target=void\ paint(java.awt.Graphics)
+comment8.params=smd
+comment8.target=void\ createDialog(java.lang.String)
+comment9.params=
+comment9.target=glyptoSquares()
+numComments=10
