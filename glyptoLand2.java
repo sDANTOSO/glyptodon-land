@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
@@ -13,7 +14,7 @@ import java.util.Random;
  * @Santoso Winatan
  * @26/05/2025
  */
-public class glyptoLand1 extends JFrame implements ActionListener{
+public class glyptoLand2 extends JFrame implements ActionListener{
     Canvas myGraphic;
     JButton myButton;
     int clicks=0;
@@ -55,7 +56,7 @@ public class glyptoLand1 extends JFrame implements ActionListener{
         //how big will the squares be 
     }
 
-    public glyptoLand1()
+    public glyptoLand2()
     {
         setTitle(" Glyptodon Land ");    //gets name
         int numberx = 500 ;   //gets dimensions
@@ -68,24 +69,17 @@ public class glyptoLand1 extends JFrame implements ActionListener{
         myButton.setForeground(color);  // set text colour
         myButton.setText("<html>GLYPTODON LAND!<br>Press aywhere to play </br> <br> wasd:Movement </br> q:Pickup <br> e:Feed </br> tab:Exit </html>");
 
-        //Rectangle bounds = panel.getBounds();
-        //int width = bounds.width;
-        //int height = bounds.height;
-       // int x = bounds.x;
-        //int y = bounds.y;
-
-        //myButton.setBounds(width,height,x,y);
+        
         myButton.setFocusable(false);
        myButton.addActionListener(this);
         color = new Color (30,54,28);
         myButton.setBackground(color);
         this.add(myButton);
 
-       // this.getContentPane().setPreferredSize(new Dimension(500,500));
-       //this.getContentPane().setLayout(null);
+       
         
        Scanner keyboard = new Scanner (System.in);
-        setTitle(" name ");    //gets name
+        
        
         
         //file menu
@@ -169,15 +163,12 @@ public class glyptoLand1 extends JFrame implements ActionListener{
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         
-        int xStart=0;
-        int xEnd=400;
-        int yStart=0;
-        int yEnd=400;
-        Line2D lin = new Line2D.Float(xStart,yStart,xEnd,yEnd);
-       // if(ready=true){
-       //  g2.setColor(Color.BLACK);
-       // g2.fillRect(0010,070,150,100);
-   // }
+        //int xStart=0;
+        //int xEnd=400;
+        //int yStart=0;
+        //int yEnd=400;
+        //Line2D lin = new Line2D.Float(xStart,yStart,xEnd,yEnd);
+      
         
     }
 }

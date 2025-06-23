@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
@@ -13,7 +14,7 @@ import java.util.Random;
  * @Santoso Winatan
  * @26/05/2025
  */
-public class glyptoLand1 extends JFrame implements ActionListener{
+public class glyptoLand3 extends JFrame implements ActionListener{
     Canvas myGraphic;
     JButton myButton;
     int clicks=0;
@@ -21,7 +22,6 @@ public class glyptoLand1 extends JFrame implements ActionListener{
     JMenu menu;
     JMenuItem menuItem;
     JPanel panel = new JPanel();
-    //boolean ready = false;
     void createDialog(String smd){
         JDialog box = new JDialog(this);
         box.setBounds(400,400,200,200);
@@ -55,7 +55,7 @@ public class glyptoLand1 extends JFrame implements ActionListener{
         //how big will the squares be 
     }
 
-    public glyptoLand1()
+    public glyptoLand3()
     {
         setTitle(" Glyptodon Land ");    //gets name
         int numberx = 500 ;   //gets dimensions
@@ -132,7 +132,6 @@ public class glyptoLand1 extends JFrame implements ActionListener{
             parent.remove(myButton);
             parent.revalidate(); // Revalidate the layout
             parent.repaint(); // Repaint the panel
-            //ready = true;
         }
         
         String smd=e.getActionCommand();
@@ -168,16 +167,13 @@ public class glyptoLand1 extends JFrame implements ActionListener{
     public void paint (Graphics g){ 
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
-        
+
         int xStart=0;
         int xEnd=400;
         int yStart=0;
         int yEnd=400;
         Line2D lin = new Line2D.Float(xStart,yStart,xEnd,yEnd);
-       // if(ready=true){
-       //  g2.setColor(Color.BLACK);
-       // g2.fillRect(0010,070,150,100);
-   // }
+
         
     }
 }
