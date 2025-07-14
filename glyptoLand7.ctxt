@@ -1,7 +1,7 @@
 #BlueJ class context
-comment0.target=BdayCard
+comment0.target=glyptoLand7
 comment1.params=
-comment1.target=BdayCard()
+comment1.target=glyptoLand7()
 comment2.params=e
 comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment3.params=g
