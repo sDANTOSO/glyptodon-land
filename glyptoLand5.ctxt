@@ -1,14 +1,12 @@
 #BlueJ class context
-comment0.target=glyptoLand4
+comment0.target=glyptoLand5
 comment0.text=\r\n\ create\ a\ glyptodon\ land\ game\ \r\n\r\n\ @Santoso\ Winatan\r\n\ @26/05/2025\r\n
 comment1.params=smd
 comment1.target=void\ createDialog(java.lang.String)
 comment2.params=args
 comment2.target=void\ main(java.lang.String[])
 comment3.params=
-comment3.target=glyptoLand4()
+comment3.target=glyptoLand5()
 comment4.params=e
 comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
-comment5.params=g\ ready
-comment5.target=void\ paint(java.awt.Graphics,\ boolean)
-numComments=6
+numComments=5
