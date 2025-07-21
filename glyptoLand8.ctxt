@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=glyptoLand8
+comment0.text=\r\n\ create\ a\ glyptodon\ land\ game\r\nThis\ version\ combines\ the\ squares\ and\ loading\ screen\r\n\r\n\ @Santoso\ Winatan\r\n\ @16/07/2025\r\n
+comment1.params=
+comment1.target=glyptoLand8()
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=g
+comment3.target=void\ paint(java.awt.Graphics)
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+numComments=5

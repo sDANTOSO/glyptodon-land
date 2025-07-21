@@ -92,11 +92,16 @@ public class glyptoSquares extends JFrame implements ActionListener,MouseListene
         g2.setColor(color);
         //g2.setColor(Color.BLACK);
         g2.fillRect(10,70,64,64);
+         Color dirt = new Color (168,144,76);
+        g2.setColor(dirt);
+        g2.fillRect(15,75,50,40);
+        g2.fillRect(34,104,25,20);
+        
         //g2.setColor(Color.color);
         
         //ocean
         
-        g2.fillRect(75,70,64,64);
+        g2.fillRect(74,70,64,64);
         Color seablue = new Color (84,150,176);
         g2.setColor(seablue);
         g2.fillRect(80,74,48,48);
@@ -107,16 +112,16 @@ public class glyptoSquares extends JFrame implements ActionListener,MouseListene
         
         g2.setColor(color);
         
-        g2.fillRect(140,70,64,64); 
+        g2.fillRect(138,70,64,64); 
         Color green = new Color (116,122,76);
         g2.setColor(green);
         g2.fillRect(145,75,48,48);
-        g2.fillRect(257,74,5,20);
+        //g2.fillRect(257,74,5,20);
         
         //dirt
         
         g2.setColor(color);
-        g2.fillRect(205,70,64,64);
+        g2.fillRect(202,70,64,64);
         Color brown = new Color (111,78,65);
         g2.setColor(brown);
         g2.fillRect(210,74,48,48);
@@ -127,15 +132,15 @@ public class glyptoSquares extends JFrame implements ActionListener,MouseListene
         //bush
             
         g2.setColor(color);
-        g2.fillRect(270,70,64,64); 
+        g2.fillRect(266,70,64,64); 
         Color darkgreen = new Color (64,69,37);
         g2.setColor(darkgreen);
-        g2.fillRect(279,78,48,48);
-        g2.fillRect(276,82,54,38);
+        g2.fillRect(274,78,48,48);
+        g2.fillRect(270,82,54,38);
         
         // glyptodon
         g2.setColor(color);
-        g2.fillRect(335,70,64,64); // square
+        g2.fillRect(330,70,64,64); // square
         Color skincolor = new Color (188,145,95);
         Color brownshell = new Color (179,102,16);
         g2.setColor(brownshell);
@@ -157,7 +162,7 @@ public class glyptoSquares extends JFrame implements ActionListener,MouseListene
         // dodo
         
         g2.setColor(color);
-        g2.fillRect(400,70,64,64); // square
+        g2.fillRect(394,70,64,64); // square
         Color feathercolor = new Color (141,146,215);
         g2.setColor(feathercolor);
         g2.fillRect(418,90,25,15);// body
@@ -170,7 +175,7 @@ public class glyptoSquares extends JFrame implements ActionListener,MouseListene
         g2.fillRect(428,76,6,8);//tail
         
         g2.setColor(color);
-        g2.fillRect(465,70,64,64); // squar
+        g2.fillRect(458,70,64,64); // squar
         
         g2.setColor(feathercolor);
         g2.fillRect(483,90,18,12);// body
@@ -181,9 +186,25 @@ public class glyptoSquares extends JFrame implements ActionListener,MouseListene
         
         g2.setColor(tailcolor);
         g2.fillRect(489,80,6,6);//tail
-        //}
+        
+        
+        g2.setColor(color);
+        g2.fillRect(10,134,64,64);
+        
+        g2.setColor(color);
+        g2.fillRect(10,134+64,64,64);
+        
+        g2.setColor(color);
+        g2.fillRect(10,134+64+64,64,64);
+        
+        g2.setColor(color);
+        g2.fillRect(10,134+(64*3),64,64);
+        
+        g2.setColor(color);
+        g2.fillRect(10,134,64,64);
         /*
-
+        
+        
         g2.fillOval(0010,070,150,100);
 
         g2.setColor(Color.RED);
