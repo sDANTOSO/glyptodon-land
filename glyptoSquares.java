@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.geom.*;
 import java.util.Scanner;
 import java.awt.event.*;
+
 import java.util.Random;
 /**
  *  create the squares for my game also make the menu 
@@ -158,7 +159,7 @@ public class glyptoSquares extends JFrame implements ActionListener,MouseListene
         g2.setColor(Color.BLACK);
         g2.fillRect(362,127,2,2);//l eye
         g2.fillRect(370,127,2,2);// r eye
-        
+        /*
         // dodo
         
         g2.setColor(color);
@@ -174,6 +175,7 @@ public class glyptoSquares extends JFrame implements ActionListener,MouseListene
         g2.setColor(tailcolor);
         g2.fillRect(428,76,6,8);//tail
         
+        // dodo 2
         g2.setColor(color);
         g2.fillRect(458,70,64,64); // squar
         
@@ -186,8 +188,41 @@ public class glyptoSquares extends JFrame implements ActionListener,MouseListene
         
         g2.setColor(tailcolor);
         g2.fillRect(489,80,6,6);//tail
+        */
+        //dodo 3
+         g2.setColor(color);
+        g2.fillRect(10,70,64,64); // squar
         
+        Color feathercolor = new Color (182,169,194);
+        g2.setColor(feathercolor);
+        g2.fillRect(35,90,18,12);// body
+        g2.fillRect(37,84,14,6);// body
+        //g2.fillRect(3,100,18,12);// body
+        g2.fillRect(37,102,14,6);// body
+        g2.fillRect(39,108,10,2);// body
+        g2.fillRect(41,110,6,4);// body
+        g2.fillRect(42,114,4,2);// body
+        //g2.fillRect(44,116,8,3);// body
+        Color beakcolor = new Color (218,228,245);
+        g2.setColor(beakcolor);
+        g2.fillRect(43,116,2,3);
+        Color beakendcolor = new Color (130,97,7);
+        g2.setColor(beakendcolor);
+        g2.fillRect(42,119,4,4);
+        g2.fillRect(43,123,2,1);
+        g2.setColor(feathercolor);
+        g2.fillRect(42,114,4,2);// body
         
+        Color tailcolor = new Color (206,209,252);
+        g2.setColor(tailcolor);
+        g2.fillRect(41,82,6,4);//tail
+        g2.fillRect(42,81,4,6);//tail
+        g2.setColor(Color.BLACK);
+        
+        g2.fillRect(41,112,2,2);//l eye
+        g2.fillRect(45,112,2,2);// r eye
+        
+        /*
         g2.setColor(color);
         g2.fillRect(10,134,64,64);
         

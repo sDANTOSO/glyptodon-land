@@ -83,7 +83,7 @@ public class glyptoLand10 extends JFrame {
             String[][] grid = new String[8][8];
             String[] differentsquares = {"bush","grass","water","bus","dirt", "pond","glyptodon", "dodo"} ;
             int[][] squarechance = { {0,25},{26,35},{36,45},{46,55},{56,65},{66,75},{76,88}, {89,100}};
-            
+
             Random random = new Random();
 
             for (int x=0;x<8; x++){ 
@@ -140,7 +140,7 @@ public class glyptoLand10 extends JFrame {
                     if(24>=interactint && interactint >=23){
                         // glyptodon
                         //g2.setColor(color);
-                       // g2.fillRect(10 +(64*x),70+(64*y),64,64); // square
+                        // g2.fillRect(10 +(64*x),70+(64*y),64,64); // square
                         Color skincolor = new Color (188,145,95);
                         Color brownshell = new Color (179,102,16);
                         g2.setColor(brownshell);
@@ -167,11 +167,41 @@ public class glyptoLand10 extends JFrame {
                         g2.setColor(darkgreen);
                         g2.fillRect(18+(64*x),78+(64*y),48,48);
                         g2.fillRect(14+(64*x),82+(64*y),54,38);
+                    }else if(41>=interactint && interactint >=37){
+                        //dodo
+                        Color feathercolor = new Color (182,169,194);
+                        g2.setColor(feathercolor);
+                        g2.fillRect(35 +(64*x),90+(64*y),18,12);// body
+                        g2.fillRect(37 +(64*x),84+(64*y),14,6);// body
+                        //g2.fillRect(3,100,18,12);// body
+                        g2.fillRect(37 +(64*x),102+(64*y),14,6);// body
+                        g2.fillRect(39 +(64*x),108+(64*y),10,2);// body
+                        g2.fillRect(41 +(64*x),110+(64*y),6,4);// body
+                        g2.fillRect(42 +(64*x),114+(64*y),4,2);// body
+                        //g2.fillRect(44,116,8,3);// body
+                        Color beakcolor = new Color (218,228,245);
+                        g2.setColor(beakcolor);
+                        g2.fillRect(43 +(64*x),116+(64*y),2,3);
+                        Color beakendcolor = new Color (130,97,7);
+                        g2.setColor(beakendcolor);
+                        g2.fillRect(42 +(64*x),119+(64*y),4,4);
+                        g2.fillRect(43 +(64*x),123+(64*y),2,1);
+                        g2.setColor(feathercolor);
+                        g2.fillRect(42 +(64*x),114+(64*y),4,2);// body
+
+                        Color tailcolor = new Color (206,209,252);
+                        g2.setColor(tailcolor);
+                        g2.fillRect(41 +(64*x),82+(64*y),6,4);//tail
+                        g2.fillRect(42 +(64*x),81+(64*y),4,6);//tail
+                        g2.setColor(Color.BLACK);
+
+                        g2.fillRect(41 +(64*x),112+(64*y),2,2);//l eye
+                        g2.fillRect(45 +(64*x),112+(64*y),2,2);// r eye
                     }
+
                 }
             }
-            
-            
+
             // create this but fpr g;y[tpdpn
         }
     }
