@@ -144,7 +144,8 @@ public class glyptoLand10 extends JFrame {
                         Color skincolor = new Color (188,145,95);
                         Color brownshell = new Color (179,102,16);
                         g2.setColor(brownshell);
-                        g2.fillRect(30 +(64*x),84+(64*y),34,34); // base of shell
+                        g2.fillRect(31 +(64*x),84+(64*y),32,34); // base of shell
+                        g2.fillRect(30 +(64*x),85+(64*y),34,32); // base of shell
                         g2.fillRect(44 +(64*x),72+(64*y),6,15);// tail
                         g2.setColor(skincolor);
                         g2.fillRect(64 +(64*x),86+(64*y),4,8);// rbfoot
@@ -198,7 +199,6 @@ public class glyptoLand10 extends JFrame {
                         g2.fillRect(41 +(64*x),112+(64*y),2,2);//l eye
                         g2.fillRect(45 +(64*x),112+(64*y),2,2);// r eye
                     }
-
                 }
             }
 
