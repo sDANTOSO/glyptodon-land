@@ -22,16 +22,51 @@ import java.util.Random;
  * @Santoso Winatan
  * @16/07/2025
  */
-public class glyptoLand10 extends JFrame {
+public class glyptoLand11 extends JFrame implements ActionListener {
     JMenuBar menuBar;
     JMenu menu;
     JMenuItem menuItem;
     JButton button2;
     JPanel panel;
     boolean button = false;
+    public void actionPerformed(ActionEvent e){}
+     public void actionPerformed(ActionEvent e ,Graphics g){
+        super.paint(g);
+       Graphics2D g2 = (Graphics2D) g;
 
-    glyptoLand10()
+        String smd=e.getActionCommand();
+        switch (smd) {// does different things depending on what they do
+            case "Quit"  : System.exit(0);
+                break;
+            case "Escape"  : System.exit(0);
+                break;
+
+            case "Up"  : Color brown = new Color (87,56,28);
+                        g2.setColor(brown);
+                        g2.fillRect(10,70+64,15,15);
+                break;
+            case "a"  : System.out.println("less fattie");
+                
+                break;     
+
+            case "s"  : System.out.println("169.99");
+                break; 
+            case "d"  : System.out.println("249.99");
+                break;
+                case "q"  : System.out.println("249.99");
+                break;
+                case "e"  : System.out.println("249.99");
+                break;
+
+            default:
+                System.out.print(smd);
+                break;  
+        }
+        }
+    glyptoLand11()
     {
+        Scanner keyboard = new Scanner (System.in);
+        
         panel = new JPanel();
         menuBar=new JMenuBar();
 
@@ -65,7 +100,27 @@ public class glyptoLand10 extends JFrame {
         this.setJMenuBar (menuBar);
         menu= new JMenu("File");
         menuBar.add(menu);
+        
+        menu= new JMenu("File");
+        menuBar.add(menu);
+        menuItem=new JMenuItem("Quit");
+        menuItem.addActionListener(this);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke('O'));
+        menu.add(menuItem);
+        
+       
 
+        menuItem=new JMenuItem("Escape");
+        menuItem.addActionListener(this);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke("DOWN"));
+        menu.add(menuItem);
+        
+        menuItem=new JMenuItem("Up");
+        menuItem.addActionListener(this);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke("w"));
+        menu.add(menuItem);
+        
+         
         this.add(panel);
         this.setTitle("Glyptodon Land");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,11 +129,12 @@ public class glyptoLand10 extends JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-
+    
     public void paint(Graphics g){
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
 
+        //System.out.println("e");
         if(button){       
             String[][] grid = new String[8][8];
             String[] differentsquares = {"bush","grass","water","bus","dirt", "pond","glyptodon", "dodo"} ;
@@ -198,15 +254,14 @@ public class glyptoLand10 extends JFrame {
                         g2.fillRect(41 +(64*x),112+(64*y),2,2);//l eye
                         g2.fillRect(45 +(64*x),112+(64*y),2,2);// r eye
                     }
-
                 }
             }
 
             // create this but fpr g;y[tpdpn
         }
     }
-
+    
     public static void main(String[] args){
-        new glyptoLand10();
+        new glyptoLand11();
     }
 }

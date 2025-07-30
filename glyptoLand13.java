@@ -15,6 +15,8 @@ import java.awt.event.*;
 import java.util.Random;
 import java.awt.Dimension;
 import java.util.Random;
+import javax.swing.Timer;
+
 /**
  * create a glyptodon land game
  *This version combines version 8 with the code from earlier versions that will allow for a menu and grid
@@ -22,16 +24,57 @@ import java.util.Random;
  * @Santoso Winatan
  * @16/07/2025
  */
-public class glyptoLand10 extends JFrame {
+public class glyptoLand13 extends JFrame implements ActionListener {
     JMenuBar menuBar;
     JMenu menu;
     JMenuItem menuItem;
     JButton button2;
     JPanel panel;
     boolean button = false;
+    boolean moveup = false;
+    boolean movedown= false;
+    boolean moveleft = false;
+    boolean moveright = true;
+    //public void actionPerformed(ActionEvent e){}
 
-    glyptoLand10()
+    public void actionPerformed(ActionEvent e ){
+        //super.paint(g);
+        //Graphics2D g2 = (Graphics2D) g;
+
+        String smd=e.getActionCommand();
+        switch (smd) {// does different things depending on what they do
+            case "Quit"  : System.exit(0);
+                break;
+            case "Escape"  : System.exit(0);
+                break;
+
+            case "Up"  : Color brown = new Color (87,56,28);
+                //g2.setColor(brown);
+                //g2.fillRect(10,70+64,15,15);
+                break;
+            case "a"  : System.out.println("less fattie");
+
+                break;     
+
+            case "s"  : System.out.println("169.99");
+                break; 
+            case "d"  : System.out.println("249.99");
+                break;
+            case "q"  : System.out.println("249.99");
+                break;
+            case "e"  : System.out.println("249.99");
+                break;
+
+            default:
+                System.out.print(smd);
+                break;  
+        }
+    }
+
+    glyptoLand13()
     {
+        Scanner keyboard = new Scanner (System.in);
+
         panel = new JPanel();
         menuBar=new JMenuBar();
 
@@ -66,6 +109,23 @@ public class glyptoLand10 extends JFrame {
         menu= new JMenu("File");
         menuBar.add(menu);
 
+        menu= new JMenu("File");
+        menuBar.add(menu);
+        menuItem=new JMenuItem("Quit");
+        menuItem.addActionListener(this);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke('O'));
+        menu.add(menuItem);
+
+        menuItem=new JMenuItem("Escape");
+        menuItem.addActionListener(this);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke("DOWN"));
+        menu.add(menuItem);
+
+        menuItem=new JMenuItem("Up");
+        menuItem.addActionListener(this);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke("w"));
+        menu.add(menuItem);
+
         this.add(panel);
         this.setTitle("Glyptodon Land");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,65 +133,96 @@ public class glyptoLand10 extends JFrame {
         //this.getContentPane().setPreferredSize(new Dimension(numberx,numbery));// the preffered size of the window    
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
+        this.addComponentListener(new ComponentAdapter() {
+                @Override
+                public void componentResized(ComponentEvent e) {
+                    // This code will be executed every time the JFrame is resized
+                    JFrame sourceFrame = (JFrame) e.getSource();
+                    System.out.println("JFrame resized to: " + sourceFrame.getWidth() + "x" + sourceFrame.getHeight());
+                    moveup=true;
+                    // Add your specific logic here, e.g., re-layout components, update graphics
+                }
+            });
+        moveup=false;
     }
 
     public void paint(Graphics g){
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
+        //int counter=0;
+        String[][] currentgrid = new String[8][8];
+        //String[] grid = new String[8];
+        //int[][] squarechance = { {0,0},{0,1},{36,45},{46,55},{56,65},{66,75},{76,88}, {89,100}};
+        //System.out.println("e");
+        Color color = new Color (207,168,78);
 
-        if(button){       
+        Color seablue = new Color (53,92,94);
+        Color green = new Color (116,122,76);
+        Color brown = new Color (140,110,28);
+        Color dirt = new Color (168,144,76);
+
+        if(button == true && moveup ==false){       
             String[][] grid = new String[8][8];
             String[] differentsquares = {"bush","grass","water","bus","dirt", "pond","glyptodon", "dodo"} ;
             int[][] squarechance = { {0,25},{26,35},{36,45},{46,55},{56,65},{66,75},{76,88}, {89,100}};
-
+            //counter++;
             Random random = new Random();
 
             for (int x=0;x<8; x++){ 
                 for (int y=0;y<8; y++){
-                    Color color = new Color (207,168,78);
+
                     int myint = random.nextInt(101);
                     System.out.println(myint);
+
                     if( 25 >=myint && myint >=0 ){
+                        currentgrid[x][y]= ("dirt");
                         g2.setColor(color);
                         g2.fillRect(10 +(64*x),70 + (64*y),64,64);
                     }else if (35>=myint && myint >=26) {
                         //ocean
+                        currentgrid[x][y]= ("ocean");
                         g2.setColor(color);
                         g2.fillRect(10 +(64*x),70 + (64*y),64,64);
-                        Color seablue = new Color (53,92,94);
+
                         g2.setColor(seablue);
                         g2.fillRect(16+(64*x),74+(64*y),48,48);
                         g2.fillRect(64+(64*x),74+(64*y),5,20);
                         g2.fillRect(24+(64*x),122+(64*y),36,5);
                     }else if (45>=myint && myint >=36) {
                         //grass
+                        currentgrid[x][y]= ("grass");
                         g2.setColor(color);
                         g2.fillRect(10 +(64*x),70 + (64*y),64,64); 
-                        Color green = new Color (116,122,76);
+
                         g2.setColor(green);
                         g2.fillRect(17+(64*x),75+(64*y),48,48);
                     }else if (55>=myint && myint >=46) {
                         //mud
+                        currentgrid[x][y]= ("mud");
                         g2.setColor(color);
                         g2.fillRect(10 +(64*x),70+ (64*y),64,64);
-                        Color brown = new Color (140,110,28);
+
                         g2.setColor(brown);
                         g2.fillRect(18+(64*x),74+(64*y),48,48);
                         g2.fillRect(65+(64*x),74+(64*y),5,20);
                         g2.fillRect(26+(64*x),122+(64*y),36,5);
                     }else if (65>=myint && myint >=56) {
                         //bush
+                        currentgrid[x][y]= ("dirt");
                         g2.setColor(color);
                         g2.fillRect(10 +(64*x),70 + (64*y),64,64);
                     }else if (70>=myint && myint >=66){
                         //bush
+                        currentgrid[x][y]= ("dirt");
                         g2.setColor(color);
                         g2.fillRect(10 +(64*x),70 + (64*y),64,64);
                     }else if (100>=myint && myint >=70){
                         //dirt
+                        currentgrid[x][y]= ("dirtier");
                         g2.setColor(color);
                         g2.fillRect(10+(64*x),70+(64*y),64,64);
-                        Color dirt = new Color (168,144,76);
+
                         g2.setColor(dirt);
                         g2.fillRect(15+(64*x),75+(64*y),50,40);
                         g2.fillRect(34+(64*x),104+(64*y),25,20);
@@ -158,7 +249,7 @@ public class glyptoLand10 extends JFrame {
                         g2.setColor(Color.BLACK);
                         g2.fillRect(42 +(64*x),127+(64*y),2,2);//l eye
                         g2.fillRect(50 +(64*x),127+(64*y),2,2);// r eye);
-                        grid [x][y]="glyptodon";
+                        //grid [x][y]="glyptodon";
                     }else if(36>=interactint && interactint >=25){
                         //bush
                         g2.setColor(color);
@@ -198,15 +289,60 @@ public class glyptoLand10 extends JFrame {
                         g2.fillRect(41 +(64*x),112+(64*y),2,2);//l eye
                         g2.fillRect(45 +(64*x),112+(64*y),2,2);// r eye
                     }
-
                 }
             }
+
+            Timer timer = new Timer(100, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            while (moveup == false){
+                                for (int x=0;x<8; x++){ 
+                                    for (int y=0;y<8; y++){
+
+                                        if (currentgrid[x][y].equals("dirt") ){
+                                            g2.setColor(color);
+                                            g2.fillRect(10 +(64*x),70 + (64*y),64,64);
+                                        }else if (currentgrid[x][y].equals("dirtier")){
+
+                                            g2.setColor(color);
+                                            g2.fillRect(10+(64*x),70+(64*y),64,64);
+
+                                            g2.setColor(dirt);
+                                            g2.fillRect(15+(64*x),75+(64*y),50,40);
+                                            g2.fillRect(34+(64*x),104+(64*y),25,20);                        
+                                        }else if (currentgrid[x][y].equals("ocean")){
+                                            g2.setColor(color);
+                                            g2.fillRect(10 +(64*x),70 + (64*y),64,64);
+
+                                            g2.setColor(seablue);
+                                            g2.fillRect(16+(64*x),74+(64*y),48,48);
+                                            g2.fillRect(64+(64*x),74+(64*y),5,20);
+                                            g2.fillRect(24+(64*x),122+(64*y),36,5);
+                                        }else if (currentgrid[x][y].equals( "grass")){
+                                            g2.setColor(color);
+                                            g2.fillRect(10 +(64*x),70 + (64*y),64,64); 
+
+                                            g2.setColor(green);
+                                            g2.fillRect(17+(64*x),75+(64*y),48,48);
+                                        }else if (currentgrid[x][y].equals( "mud")){
+                                            g2.fillRect(10 +(64*x),70+ (64*y),64,64);
+
+                                            g2.setColor(brown);
+                                            g2.fillRect(18+(64*x),74+(64*y),48,48);
+                                            g2.fillRect(65+(64*x),74+(64*y),5,20);
+                                            g2.fillRect(26+(64*x),122+(64*y),36,5);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
 
             // create this but fpr g;y[tpdpn
         }
     }
 
     public static void main(String[] args){
-        new glyptoLand10();
+        new glyptoLand13();
     }
 }
