@@ -14,9 +14,9 @@ import java.util.Scanner;
 import java.awt.event.*;
 import java.util.Random;
 import java.awt.Dimension;
-import java.util.Random;
 import javax.swing.Timer;
-
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 /**
  * create a glyptodon land game
  *This version combines version 8 with the code from earlier versions that will allow for a menu and grid
@@ -24,17 +24,16 @@ import javax.swing.Timer;
  * @Santoso Winatan
  * @16/07/2025
  */
-public class glyptoLand13 extends JFrame implements ActionListener {
+public class glyptoLand14 extends JFrame implements ActionListener {
     JMenuBar menuBar;
     JMenu menu;
     JMenuItem menuItem;
     JButton button2;
     JPanel panel;
     boolean button = false;
-    boolean moveup = false;
-    boolean movedown= false;
-    boolean moveleft = false;
-    boolean moveright = true;
+    String[][] currentgrid = new String[8][8];
+    
+    int counter = 0;
     //public void actionPerformed(ActionEvent e){}
 
     public void actionPerformed(ActionEvent e ){
@@ -71,7 +70,7 @@ public class glyptoLand13 extends JFrame implements ActionListener {
         }
     }
 
-    glyptoLand13()
+    glyptoLand14()
     {
         Scanner keyboard = new Scanner (System.in);
 
@@ -141,8 +140,9 @@ public class glyptoLand13 extends JFrame implements ActionListener {
     public void paint(Graphics g){
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
+        
         //int counter=0;
-        String[][] currentgrid = new String[8][8];
+        
         //String[] grid = new String[8];
         //int[][] squarechance = { {0,0},{0,1},{36,45},{46,55},{56,65},{66,75},{76,88}, {89,100}};
         //System.out.println("e");
@@ -159,13 +159,13 @@ public class glyptoLand13 extends JFrame implements ActionListener {
             int[][] squarechance = { {0,25},{26,35},{36,45},{46,55},{56,65},{66,75},{76,88}, {89,100}};
             //counter++;
             Random random = new Random();
-
+            if (counter == 0  && button == true){
             for (int x=0;x<8; x++){ 
                 for (int y=0;y<8; y++){
 
                     int myint = random.nextInt(101);
                     System.out.println(myint);
-
+                    
                     if( 25 >=myint && myint >=0 ){
                         currentgrid[x][y]= ("dirt");
                         g2.setColor(color);
@@ -280,9 +280,12 @@ public class glyptoLand13 extends JFrame implements ActionListener {
                         g2.fillRect(41 +(64*x),112+(64*y),2,2);//l eye
                         g2.fillRect(45 +(64*x),112+(64*y),2,2);// r eye
                     }
+                    System.out.println(currentgrid[x][y]);
                 }
             }
-
+            
+            counter++;
+        }
             
 
             // create this but fpr g;y[tpdpn
@@ -292,22 +295,23 @@ public class glyptoLand13 extends JFrame implements ActionListener {
                        // @Override
                        // public void actionPerformed(ActionEvent e) {
                            // while (moveup == false){
-                               
-                               this.addComponentListener(new ComponentAdapter() {
+                        panel.addComponentListener(new ComponentAdapter() {
                 @Override
                 public void componentResized(ComponentEvent e) {
                     // This code will be executed every time the JFrame is resized
                     JFrame sourceFrame = (JFrame) e.getSource();
-                    System.out.println("JFrame resized to: " + sourceFrame.getWidth() + "x" + sourceFrame.getHeight());
+                    //System.out.println("JFrame resized to: " + sourceFrame.getWidth() + "x" + sourceFrame.getHeight());
                     //moveup=true;
                     
-                    
-                    
-                    // Add your specific logic here, e.g., re-layout components, update graphics
+                    //g2.setColor(color);
+                    //g2.fillRect(10 +(64),70 + (64),64,64);
             
+                    // Add your specific logic here, e.g., re-layout components, update graphics
+                     
+            
+
                                 for (int x=0;x<8; x++){ 
                                     for (int y=0;y<8; y++){
-
                                         if (currentgrid[x][y].equals("dirt") ){
                                             g2.setColor(color);
                                             g2.fillRect(10 +(64*x),70 + (64*y),64,64);
@@ -315,7 +319,6 @@ public class glyptoLand13 extends JFrame implements ActionListener {
 
                                             g2.setColor(color);
                                             g2.fillRect(10+(64*x),70+(64*y),64,64);
-
                                             g2.setColor(dirt);
                                             g2.fillRect(15+(64*x),75+(64*y),50,40);
                                             g2.fillRect(34+(64*x),104+(64*y),25,20);                        
@@ -341,16 +344,15 @@ public class glyptoLand13 extends JFrame implements ActionListener {
                                             g2.fillRect(65+(64*x),74+(64*y),5,20);
                                             g2.fillRect(26+(64*x),122+(64*y),36,5);
                                         }
-                                    
-                                
-                            
                         }
                     }
+                
                         }
-            });
+            });        
+           
     }
 
     public static void main(String[] args){
-        new glyptoLand13();
+        new glyptoLand14();
     }
 }
