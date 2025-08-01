@@ -24,7 +24,7 @@ import java.awt.event.ComponentEvent;
  * @Santoso Winatan
  * @16/07/2025
  */
-public class glyptoLand17 extends JFrame implements ActionListener {
+public class glyptoLand19 extends JFrame implements ActionListener {
     JMenuBar menuBar;
     JMenu menu;
     JMenuItem menuItem;
@@ -33,7 +33,10 @@ public class glyptoLand17 extends JFrame implements ActionListener {
     boolean button = false;
     String[][] currentgrid = new String[8][8];
     String[][] interactgrid = new String[8][8];
-
+    //int[][] playerpos = new int[8][8];
+    int pld = 0;
+    int pls = 0;
+    int food = 0;
     public void actionPerformed(ActionEvent e ){
         String smd=e.getActionCommand();
         switch (smd) {// does different things depending on what they do
@@ -41,27 +44,50 @@ public class glyptoLand17 extends JFrame implements ActionListener {
                 break;
             case "New Grid"  :currentgrid = Array(currentgrid);
                 interactgrid= Array2(interactgrid);;
-                panel.revalidate(); // Revalidate the layout
+
                 revalidate(); // Revalidate the layout
                 repaint();  
                 break;
 
             case "Up"  : ;
-
+                if (pls>=1){
+                    pls--; 
+                    revalidate(); // Revalidate the layout
+                    repaint();
+                }
                 break;
-            case "a"  : System.out.println("less fattie");
-
+            case "left"  : System.out.println("less fattie");
+                if (pld>=1){
+                    pld--; 
+                    revalidate(); // Revalidate the layout
+                    repaint();
+                }
                 break;     
 
-            case "s"  : System.out.println("169.99");
+            case "down"  : 
+                if (pls<7){
+                    pls++; 
+                    revalidate(); // Revalidate the layout
+                    repaint();
+                }
                 break; 
-            case "d"  : System.out.println("249.99");
+            case "right"  :     
+                if (pld<7){
+                    pld++; 
+                    revalidate(); // Revalidate the layout
+                    repaint();
+                }
                 break;
-            case "q"  : System.out.println("249.99");
+            case "food"  : 
+                if (interactgrid[pld][pls].equals("bush")){
+                    food++;
+                }System.out.println(food);
                 break;
-            case "e"  : System.out.println("249.99");
+            case "feed"  : 
+                if (interactgrid[pld][pls].equals("glyptodon") ||interactgrid[pld][pls].equals("dodo") ){
+                    food--;
+                }System.out.println(food);
                 break;
-
             default:
                 System.out.print(smd);
                 break;  
@@ -72,7 +98,7 @@ public class glyptoLand17 extends JFrame implements ActionListener {
         }
     }
 
-    glyptoLand17(){
+    glyptoLand19(){
         Scanner keyboard = new Scanner (System.in);
 
         panel = new JPanel();
@@ -109,22 +135,54 @@ public class glyptoLand17 extends JFrame implements ActionListener {
         menu= new JMenu("File");
         menuBar.add(menu);
 
-        menu= new JMenu("File");
-        menuBar.add(menu);
+        
         menuItem=new JMenuItem("Quit");
         menuItem.addActionListener(this);
-        menuItem.setAccelerator(KeyStroke.getKeyStroke('O'));
+        menuItem.setAccelerator(KeyStroke.getKeyStroke("SHIFT"));
         menu.add(menuItem);
-
+        
+        menu= new JMenu("Functions");
+        menuBar.add(menu);
         menuItem=new JMenuItem("New Grid");
+        menuItem.addActionListener(this);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke('q'));
+        menu.add(menuItem);
+        
+         menuItem=new JMenuItem("food");
         menuItem.addActionListener(this);
         menuItem.setAccelerator(KeyStroke.getKeyStroke('e'));
         menu.add(menuItem);
-
+        
+        menuItem=new JMenuItem("feed");
+        menuItem.addActionListener(this);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke('f'));
+        menu.add(menuItem);
+        
+        menu= new JMenu("Movement");
+        menuBar.add(menu);
         menuItem=new JMenuItem("Up");
         menuItem.addActionListener(this);
-        menuItem.setAccelerator(KeyStroke.getKeyStroke("w"));
+        menuItem.setAccelerator(KeyStroke.getKeyStroke('w'));
         menu.add(menuItem);
+
+        menuItem=new JMenuItem("left");
+        menuItem.addActionListener(this);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke('a'));
+        menu.add(menuItem);
+
+        menuItem=new JMenuItem("down");
+        menuItem.addActionListener(this);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke('s'));
+        menu.add(menuItem);
+
+        menuItem=new JMenuItem("right");
+        menuItem.addActionListener(this);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke('d'));
+        menu.add(menuItem);
+        
+        menu= new JMenu("Food " + food);
+        menuBar.add(menu);
+        
 
         this.add(panel);
         this.setTitle("Glyptodon Land");
@@ -135,6 +193,7 @@ public class glyptoLand17 extends JFrame implements ActionListener {
         this.setVisible(true);
         currentgrid = Array(currentgrid);
         interactgrid= Array2(interactgrid);
+        //playerpos[0][0]=1;
     }
 
     public void paint(Graphics g){
@@ -150,6 +209,7 @@ public class glyptoLand17 extends JFrame implements ActionListener {
                 Color green = new Color (116,122,76);
                 Color brown = new Color (140,110,28);
                 Color dirt = new Color (168,144,76);
+                Color character = new Color (71,59,28);
                 if (currentgrid[x][y].equals("dirt") ){
                     g2.setColor(color);
                     g2.fillRect(10 +(64*x),70 + (64*y),64,64);
@@ -241,16 +301,30 @@ public class glyptoLand17 extends JFrame implements ActionListener {
                     g2.fillRect(14+(64*x),82+(64*y),54,38);
                 }
                 System.out.println(currentgrid[x][y]);
+
+                if (x==pld && y==pls){
+                    g2.setColor(character);
+                    g2.fillRect(10 +(64*x),70+(64*y),10,10);
+                    g2.drawString("Food counter: "+ food, 15, 67);
+                }
+                
+                
             }
         }
     }
+    //public static String[][] Array2(String[][] interactgrid) {
 
+    
+    
+    
+    // }
+    
     public static String[][] Array2(String[][] interactgrid) {
         Random random = new Random();
         for (int x=0;x<8; x++){ 
             for (int y=0;y<8; y++){
                 int interactint = random.nextInt(64);
-                
+
                 if(24>=interactint && interactint >=23){
                     // glyptodon
                     interactgrid[x][y]= ("glyptodon");
@@ -276,7 +350,7 @@ public class glyptoLand17 extends JFrame implements ActionListener {
             for (int y=0;y<8; y++){
                 int myint = random.nextInt(101);
                 System.out.println(myint);
-                
+
                 if( 25 >=myint && myint >=0 ){
                     currentgrid[x][y]= ("dirt");
                 }else if (35>=myint && myint >=26) {
@@ -303,8 +377,8 @@ public class glyptoLand17 extends JFrame implements ActionListener {
         }
         return (currentgrid);
     }
-    
+
     public static void main(String[] args){
-        new glyptoLand17();
+        new glyptoLand19();
     }
 }

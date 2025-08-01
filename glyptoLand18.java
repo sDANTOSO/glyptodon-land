@@ -24,7 +24,7 @@ import java.awt.event.ComponentEvent;
  * @Santoso Winatan
  * @16/07/2025
  */
-public class glyptoLand17 extends JFrame implements ActionListener {
+public class glyptoLand18 extends JFrame implements ActionListener {
     JMenuBar menuBar;
     JMenu menu;
     JMenuItem menuItem;
@@ -36,15 +36,24 @@ public class glyptoLand17 extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e ){
         String smd=e.getActionCommand();
+
+        if (smd.equals("New Grid")){
+
+            currentgrid = Array(currentgrid);
+            interactgrid= Array2(interactgrid);;
+            revalidate(); // Revalidate the layout
+            repaint();         
+        }
         switch (smd) {// does different things depending on what they do
             case "Quit"  : System.exit(0);
                 break;
-            case "New Grid"  :currentgrid = Array(currentgrid);
-                interactgrid= Array2(interactgrid);;
-                panel.revalidate(); // Revalidate the layout
-                revalidate(); // Revalidate the layout
-                repaint();  
-                break;
+                //case "New Grid"  :currentgrid = Array(currentgrid);
+                //interactgrid= Array2(interactgrid);;
+                //panel.revalidate(); // Revalidate the layout
+                //panel.repaint(); // Repaint the panel
+                //panel.repaint(); 
+                //panel.repaint(); 
+                //break;
 
             case "Up"  : ;
 
@@ -72,7 +81,7 @@ public class glyptoLand17 extends JFrame implements ActionListener {
         }
     }
 
-    glyptoLand17(){
+    glyptoLand18(){
         Scanner keyboard = new Scanner (System.in);
 
         panel = new JPanel();
@@ -118,7 +127,7 @@ public class glyptoLand17 extends JFrame implements ActionListener {
 
         menuItem=new JMenuItem("New Grid");
         menuItem.addActionListener(this);
-        menuItem.setAccelerator(KeyStroke.getKeyStroke('e'));
+        menuItem.setAccelerator(KeyStroke.getKeyStroke("t"));
         menu.add(menuItem);
 
         menuItem=new JMenuItem("Up");
@@ -150,6 +159,7 @@ public class glyptoLand17 extends JFrame implements ActionListener {
                 Color green = new Color (116,122,76);
                 Color brown = new Color (140,110,28);
                 Color dirt = new Color (168,144,76);
+
                 if (currentgrid[x][y].equals("dirt") ){
                     g2.setColor(color);
                     g2.fillRect(10 +(64*x),70 + (64*y),64,64);
@@ -239,18 +249,21 @@ public class glyptoLand17 extends JFrame implements ActionListener {
                     g2.setColor(darkgreen);
                     g2.fillRect(18+(64*x),78+(64*y),48,48);
                     g2.fillRect(14+(64*x),82+(64*y),54,38);
+                }else{
+
                 }
                 System.out.println(currentgrid[x][y]);
             }
         }
+
     }
 
     public static String[][] Array2(String[][] interactgrid) {
         Random random = new Random();
+
         for (int x=0;x<8; x++){ 
             for (int y=0;y<8; y++){
                 int interactint = random.nextInt(64);
-                
                 if(24>=interactint && interactint >=23){
                     // glyptodon
                     interactgrid[x][y]= ("glyptodon");
@@ -272,11 +285,13 @@ public class glyptoLand17 extends JFrame implements ActionListener {
 
     public static String[][] Array(String[][] currentgrid) {
         Random random = new Random();
+
         for (int x=0;x<8; x++){ 
             for (int y=0;y<8; y++){
+
                 int myint = random.nextInt(101);
                 System.out.println(myint);
-                
+
                 if( 25 >=myint && myint >=0 ){
                     currentgrid[x][y]= ("dirt");
                 }else if (35>=myint && myint >=26) {
@@ -301,10 +316,12 @@ public class glyptoLand17 extends JFrame implements ActionListener {
                 //System.out.println(currentgrid[x][y]);
             }
         }
+
         return (currentgrid);
     }
-    
+
     public static void main(String[] args){
-        new glyptoLand17();
+        new glyptoLand18();
+
     }
 }
