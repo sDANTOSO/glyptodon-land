@@ -33,12 +33,14 @@ public class glyptoLand19 extends JFrame implements ActionListener {
     boolean button = false;
     String[][] currentgrid = new String[8][8];
     String[][] interactgrid = new String[8][8];
-    //int[][] playerpos = new int[8][8];
+    
     int pld = 0;
     int pls = 0;
     int food = 0;
     public void actionPerformed(ActionEvent e ){
         String smd=e.getActionCommand();
+        final int squareS = 1;
+        final int squareE = 7;
         switch (smd) {// does different things depending on what they do
             case "Quit"  : System.exit(0);
                 break;
@@ -50,51 +52,49 @@ public class glyptoLand19 extends JFrame implements ActionListener {
                 break;
 
             case "Up"  : ;
-                if (pls>=1){
+                if (pls>=squareS){
                     pls--; 
                     revalidate(); // Revalidate the layout
                     repaint();
                 }
                 break;
-            case "left"  : System.out.println("less fattie");
-                if (pld>=1){
+            case "Left"  : System.out.println("less fattie");
+                if (pld>=squareS){
                     pld--; 
                     revalidate(); // Revalidate the layout
                     repaint();
                 }
                 break;     
 
-            case "down"  : 
-                if (pls<7){
+            case "Down"  : 
+                if (pls<squareE){
                     pls++; 
                     revalidate(); // Revalidate the layout
                     repaint();
                 }
                 break; 
-            case "right"  :     
-                if (pld<7){
+            case "Right"  :     
+                if (pld<squareE){
                     pld++; 
                     revalidate(); // Revalidate the layout
                     repaint();
                 }
                 break;
-            case "food"  : 
+            case "Pickup food"  : 
                 if (interactgrid[pld][pls].equals("bush")){
                     food++;
+                    revalidate(); // Revalidate the layout
+                    repaint();
                 }System.out.println(food);
                 break;
-            case "feed"  : 
+            case "Feed food"  : 
                 if (interactgrid[pld][pls].equals("glyptodon") ||interactgrid[pld][pls].equals("dodo") ){
                     food--;
+                    revalidate(); // Revalidate the layout
+                    repaint();
                 }System.out.println(food);
                 break;
-            default:
-                System.out.print(smd);
-                break;  
-
-                // create movement use repaint squares then move character maybe multiple times for animation
-                // create repaint once any of buttons pressed on menu or something so white box doesn't come up
-                // create characters 
+            
         }
     }
 
@@ -148,12 +148,12 @@ public class glyptoLand19 extends JFrame implements ActionListener {
         menuItem.setAccelerator(KeyStroke.getKeyStroke('q'));
         menu.add(menuItem);
         
-         menuItem=new JMenuItem("food");
+         menuItem=new JMenuItem("Pickup food");
         menuItem.addActionListener(this);
         menuItem.setAccelerator(KeyStroke.getKeyStroke('e'));
         menu.add(menuItem);
         
-        menuItem=new JMenuItem("feed");
+        menuItem=new JMenuItem("Feed food");
         menuItem.addActionListener(this);
         menuItem.setAccelerator(KeyStroke.getKeyStroke('f'));
         menu.add(menuItem);
@@ -165,25 +165,22 @@ public class glyptoLand19 extends JFrame implements ActionListener {
         menuItem.setAccelerator(KeyStroke.getKeyStroke('w'));
         menu.add(menuItem);
 
-        menuItem=new JMenuItem("left");
+        menuItem=new JMenuItem("Left");
         menuItem.addActionListener(this);
         menuItem.setAccelerator(KeyStroke.getKeyStroke('a'));
         menu.add(menuItem);
 
-        menuItem=new JMenuItem("down");
+        menuItem=new JMenuItem("Down");
         menuItem.addActionListener(this);
         menuItem.setAccelerator(KeyStroke.getKeyStroke('s'));
         menu.add(menuItem);
 
-        menuItem=new JMenuItem("right");
+        menuItem=new JMenuItem("Right");
         menuItem.addActionListener(this);
         menuItem.setAccelerator(KeyStroke.getKeyStroke('d'));
         menu.add(menuItem);
         
-        menu= new JMenu("Food " + food);
-        menuBar.add(menu);
         
-
         this.add(panel);
         this.setTitle("Glyptodon Land");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -193,7 +190,7 @@ public class glyptoLand19 extends JFrame implements ActionListener {
         this.setVisible(true);
         currentgrid = Array(currentgrid);
         interactgrid= Array2(interactgrid);
-        //playerpos[0][0]=1;
+        
     }
 
     public void paint(Graphics g){
@@ -209,7 +206,9 @@ public class glyptoLand19 extends JFrame implements ActionListener {
                 Color green = new Color (116,122,76);
                 Color brown = new Color (140,110,28);
                 Color dirt = new Color (168,144,76);
-                Color character = new Color (71,59,28);
+                Color character = new Color (145,106,43);
+                Color characterface = new Color (245,214,127);
+                Color darkgreen = new Color (64,69,37);
                 if (currentgrid[x][y].equals("dirt") ){
                     g2.setColor(color);
                     g2.fillRect(10 +(64*x),70 + (64*y),64,64);
@@ -242,8 +241,6 @@ public class glyptoLand19 extends JFrame implements ActionListener {
 
                 if (interactgrid[x][y].equals("glyptodon")){
                     // glyptodon
-                    //g2.setColor(color);
-                    // g2.fillRect(10 +(64*x),70+(64*y),64,64); // square
                     Color skincolor = new Color (188,145,95);
                     Color brownshell = new Color (179,102,16);
                     g2.setColor(brownshell);
@@ -267,12 +264,10 @@ public class glyptoLand19 extends JFrame implements ActionListener {
                     g2.setColor(feathercolor);
                     g2.fillRect(35 +(64*x),90+(64*y),18,12);// body
                     g2.fillRect(37 +(64*x),84+(64*y),14,6);// body
-                    //g2.fillRect(3,100,18,12);// body
                     g2.fillRect(37 +(64*x),102+(64*y),14,6);// body
                     g2.fillRect(39 +(64*x),108+(64*y),10,2);// body
                     g2.fillRect(41 +(64*x),110+(64*y),6,4);// body
                     g2.fillRect(42 +(64*x),114+(64*y),4,2);// body
-                    //g2.fillRect(44,116,8,3);// body
                     Color beakcolor = new Color (218,228,245);
                     g2.setColor(beakcolor);
                     g2.fillRect(43 +(64*x),116+(64*y),2,3);
@@ -295,7 +290,7 @@ public class glyptoLand19 extends JFrame implements ActionListener {
                     //bush
                     g2.setColor(color);
                     g2.fillRect(10 +(64*x),70+(64*y),64,64); 
-                    Color darkgreen = new Color (64,69,37);
+                    
                     g2.setColor(darkgreen);
                     g2.fillRect(18+(64*x),78+(64*y),48,48);
                     g2.fillRect(14+(64*x),82+(64*y),54,38);
@@ -303,9 +298,30 @@ public class glyptoLand19 extends JFrame implements ActionListener {
                 System.out.println(currentgrid[x][y]);
 
                 if (x==pld && y==pls){
+                   
                     g2.setColor(character);
-                    g2.fillRect(10 +(64*x),70+(64*y),10,10);
-                    g2.drawString("Food counter: "+ food, 15, 67);
+                    g2.fillRect(10 +(64*x),79+(64*y),22,6); // shoulders
+                    g2.fillRect(12 +(64*x),86+(64*y),6,6); //footl
+                    g2.fillRect(24 +(64*x),86+(64*y),6,6);//footr
+                    
+                    g2.setColor(characterface);
+                    g2.fillRect(13 +(64*x),72+(64*y),16,16);//head
+                    g2.fillRect(12 +(64*x),74+(64*y),18,4);//ears
+                    
+                    g2.setColor(character);
+                    g2.fillRect(15 +(64*x),72+(64*y),12,11);//hat
+                    g2.fillRect(17 +(64*x),83+(64*y),8,3);// hat
+                    
+                    if(food >0){
+                        g2.setColor(darkgreen);
+                        g2.fillRect(10 +(64*x),82+(64*y),3,10); // food 
+                        g2.drawString("Food counter: "+ food, 15, 67);
+                    }
+                    
+                    g2.setColor(Color.BLACK);
+                    g2.fillRect(15 +(64*x),87+(64*y),4,2);// eyel
+                    g2.fillRect(23 +(64*x),87+(64*y),4,2);//eyer
+                    
                 }
                 
                 
