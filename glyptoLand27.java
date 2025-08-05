@@ -234,36 +234,43 @@ public class glyptoLand27 extends JFrame implements ActionListener {
             Color character = new Color (145,106,43);
             Color characterface = new Color (245,214,127);
             Color darkgreen = new Color (64,69,37);
+            Color skincolor = new Color (188,145,95);
+            Color brownshell = new Color (179,102,16);
+            Color feathercolor = new Color (182,169,194);
+            Color beakcolor = new Color (218,228,245);
+            Color beakendcolor = new Color (130,97,7); 
+            Color tailcolor = new Color (206,209,252);
             // these are here so they can be accesed by all drawings
             if (buttonb==true){// this draws the tutorial
                 //glyptodon
                 g2.setColor(color);
-                g2.fillRect(50 +(66*1),70+(64*1),64,64); 
+                g2.fillRect(50 +(66*1),70+(64*1),64,64); //base square
 
-                Color skincolor = new Color (188,145,95);
-                Color brownshell = new Color (179,102,16);
                 g2.setColor(brownshell);
                 g2.fillRect(65 +(66*1),84+(64*1),34,34); // base of shell
                 g2.fillRect(79 +(66*1),72+(64*1),6,15);// tail
+                
                 g2.setColor(skincolor);
                 g2.fillRect(99 +(66*1),86+(64*1),4,8);// rbfoot
                 g2.fillRect(99 +(66*1),106+(64*1),4,8);//rf foot
                 g2.fillRect(61 +(66*1),86+(64*1),4,8);//lb foot
                 g2.fillRect(61 +(66*1),106+(64*1),4,8);//rf foot
                 g2.fillRect(75 +(66*1),118+(64*1),14,12);//base ofhead
+                
                 g2.setColor(brownshell);
                 g2.fillRect(78 +(66*1),119+(64*1),8,8);// head shell
                 g2.fillRect(80 +(66*1),127+(64*1),4,2);
+                
                 g2.setColor(Color.BLACK);
                 g2.fillRect(77 +(66*1),127+(64*1),2,2);//l eye
                 g2.fillRect(85 +(66*1),127+(64*1),2,2);// r eye);
                 g2.setFont(new Font("Arial",Font.BOLD,14));
                 g2.drawString("Glyptodon", 114, 215);
+                
                 //dodo
                 g2.setColor(color);
-                g2.fillRect(35 +(66*3),70+(64*1),64,64); 
+                g2.fillRect(35 +(66*3),70+(64*1),64,64); //base square
 
-                Color feathercolor = new Color (182,169,194);
                 g2.setColor(feathercolor);
                 g2.fillRect(58 +(66*3),90+(64*1),18,12);// bod1
                 g2.fillRect(60 +(66*3),84+(64*1),14,6);// bod1
@@ -271,17 +278,16 @@ public class glyptoLand27 extends JFrame implements ActionListener {
                 g2.fillRect(62 +(66*3),108+(64*1),10,2);// body
                 g2.fillRect(64 +(66*3),110+(64*1),6,4);// body
                 g2.fillRect(65 +(66*3),114+(64*1),4,2);// body
-                Color beakcolor = new Color (218,228,245);
+                
                 g2.setColor(beakcolor);
-                g2.fillRect(66 +(66*3),116+(64*1),2,3);
-                Color beakendcolor = new Color (130,97,7);
+                g2.fillRect(66 +(66*3),116+(64*1),2,3);// beak
+                
                 g2.setColor(beakendcolor);
-                g2.fillRect(65 +(66*3),119+(64*1),4,4);
+                g2.fillRect(65 +(66*3),119+(64*1),4,4);//end of beak
                 g2.fillRect(66 +(66*3),123+(64*1),2,1);
                 g2.setColor(feathercolor);
                 g2.fillRect(65 +(66*3),114+(64*1),4,2);// body
 
-                Color tailcolor = new Color (206,209,252);
                 g2.setColor(tailcolor);
                 g2.fillRect(64 +(66*3),82+(64*1),6,4);//tail
                 g2.fillRect(65 +(66*3),81+(64*1),4,6);//tail
@@ -289,7 +295,6 @@ public class glyptoLand27 extends JFrame implements ActionListener {
 
                 g2.fillRect(64 +(66*3),112+(64*1),2,2);//l eye
                 g2.fillRect(68 +(66*3),112+(64*1),2,2);// r e2e
-
                 g2.drawString("Dodo", 246, 215);
 
                 //bush
@@ -369,8 +374,7 @@ public class glyptoLand27 extends JFrame implements ActionListener {
 
                         if (interactgrid[x][y].equals("glyptodon")){// this draws the things the user can interact with
                             // glyptodon
-                            Color skincolor = new Color (188,145,95);
-                            Color brownshell = new Color (179,102,16);
+                            
                             g2.setColor(brownshell);
                             g2.fillRect(20 +(64*x),64+(64*y),34,34); // base of shell
                             g2.fillRect(34 +(64*x),52+(64*y),6,15);// tail
@@ -388,7 +392,6 @@ public class glyptoLand27 extends JFrame implements ActionListener {
                             g2.fillRect(40 +(64*x),107+(64*y),2,2);// r eye);
                         }else if (interactgrid[x][y].equals("dodo")){
                             //dodo
-                            Color feathercolor = new Color (182,169,194);
                             g2.setColor(feathercolor);
                             g2.fillRect(25 +(64*x),70+(64*y),18,12);// body
                             g2.fillRect(27 +(64*x),64+(64*y),14,6);// body
@@ -396,17 +399,15 @@ public class glyptoLand27 extends JFrame implements ActionListener {
                             g2.fillRect(29 +(64*x),88+(64*y),10,2);// body
                             g2.fillRect(31 +(64*x),90+(64*y),6,4);// body
                             g2.fillRect(32 +(64*x),94+(64*y),4,2);// body
-                            Color beakcolor = new Color (218,228,245);
                             g2.setColor(beakcolor);
                             g2.fillRect(33 +(64*x),96+(64*y),2,3);
-                            Color beakendcolor = new Color (130,97,7);
+
                             g2.setColor(beakendcolor);
                             g2.fillRect(32 +(64*x),99+(64*y),4,4);
                             g2.fillRect(33 +(64*x),13+(64*y),2,1);
                             g2.setColor(feathercolor);
                             g2.fillRect(32 +(64*x),94+(64*y),4,2);// body
 
-                            Color tailcolor = new Color (206,209,252);
                             g2.setColor(tailcolor);
                             g2.fillRect(31 +(64*x),62+(64*y),6,4);//tail
                             g2.fillRect(32 +(64*x),61+(64*y),4,6);//tail
